@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="Description" content="Enter your description here">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Archivo&amp;display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./idcard.css">
+        <title>ID Card Generator</title>
+    </head>
+    
+    <body>
+        
+        <div id="cen">
+                <div id="upperpara">
+                     <h3 id="cardheader">ID Card Generator</h3>
+                  </div>
+        
+              <div id="main">
+                 
+                  <div class="container" id="uppermain">
+                        
+                        <div id="cardleft" class="col-sm-6">
+                        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+                            <form class="px-2 py-2 frm" runat="server">
+                              
+                              
+                              <div class="form-row">
+                              <div class="form-group col-sm-12 ">
+                              <h3>Enter Student Details</h3>
+                                <label for="studentName">Enter Your Name:</label>
+                                <input type="text" style="font-family: FontAwesome;" class="form-control" id="studentName" placeholder=" Enter Name">
+                              </div>
+                              <div class="col-sm-12">
+                              </div>
+                              </div>
+        
+                              <div class="form-row">
+                                <div class="form-group col-sm-12">
+                                <label for="college">Enter Your College Name:</label>
+                                <input type="text" style="font-family: FontAwesome;" class="form-control" id="college" placeholder=" College Name">
+                              </div>
+                              </div>
+        
+                             
+        
+                              <div class="form-row">
+                               <div class="form-group col-sm-12">
+                                <label for="address">Enter Your Address:</label>
+                                <input type="text" style="font-family: FontAwesome;" class="form-control" id="address" placeholder=" Address">
+                              </div>
+                              </div>
+        
+                              <div class="form-row">
+                              <div class="form-group col-sm-12">
+                                <label for="idphoto">Choose a file</label>
+                                <input type="file" class="form-control-file" id="imgInp">
+                                <img id="imgPrev" src="#" alt="your image">
+                              </div>
+                              </div>
+                             
+                             
+                             <div class="form-row">
+                               <div class="form-group col-sm-12">
+                              <a class="btn btn-primary" onClick="cardShow()">Generate ID card</a>
+                              </div>
+                              </div>
+                          
+                              
+                              
+                            </form>
+                        </div>
+                       <div id="cardright" class="col-sm-6">
+                        <h3 class="maincard" id="headershow" style="text-align: center;"></h3>
+                           <div id="idcardcen">
+                            
+                            <div class="maincard" style="display:none" id="idcard">
+                                  <div id="idcardleft">
+                                      <img src="" alt="student image" class="" id="idCardImg">
+                                  </div>
+                                  <div id="idcardright">
+                                      <div id="para">
+                                        
+                                      <p class="details" id="nameshow"></p>
+                                          <p class="details" id="collegeshow"></p>
+                                          <p class="details" id="addressshow"></p>
+                                      </div>    
+                                  </div> 
+                              </div>
+                        </div>
+                    
+                      
+                        
+                       </div>
+                  </div>
+              </div>
+        </div>
+        
+<script>
+function cardShow(){
+document.getElementById("idcard").style.display="flex";
+studentName=document.getElementById("studentName").value;
+collegeName=document.getElementById("college").value;
+address=document.getElementById("address").value;
+document.getElementById("headershow").innerHTML=`<h3>Generated Id Card</h3>`;
+document.getElementById("nameshow").innerHTML=`Name: ${studentName}`;
+document.getElementById("collegeshow").innerHTML=`College: ${collegeName}`;
+document.getElementById("addressshow").innerHTML=`Address: ${address}`;
+}
+function readURL(input) {
+if (input.files && input.files[0]) {
+  var reader = new FileReader();
+  
+  reader.onload = function(e) {
+    $('#imgPrev').attr('src', e.target.result);
+    $('#idCardImg').attr('src', e.target.result);
+  }
+  reader.readAsDataURL(input.files[0]); 
+}
+}
+
+$("#imgInp").change(function() {
+readURL(this);
+});
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+        </body>
+</html>
